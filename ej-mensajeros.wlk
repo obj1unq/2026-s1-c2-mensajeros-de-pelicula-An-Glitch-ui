@@ -19,17 +19,8 @@ object paquete {
 // ================================= MENSAJEROS ===================================
 object jeanGray {
   const peso = 65
-  var llamarA = null
   const puedeLlamar = true 
 
-
-  method llamarA() {
-    return llamarA
-  }
-
-  method llamarA(unMensajero) {
-    llamarA = unMensajero
-  }
 
   method peso() {
     return peso
@@ -63,32 +54,21 @@ object neo {
 }
 
 object saraConnor {
-  var peso = 70
-  var transporte = "Moto"
-  var cantidadDeAcoplados = 0
+  var pesoPropio = 70
+  var transporte = moto
+  const puedeLlamar = false
 
 
-  method pesoDelTransporte() {
-    return if (transporte == "Moto"){
-        100 
-    } else {
-        500 + (cantidadDeAcoplados * 500)
-    }
+  method pesoPropio(pesoDeSarah) {
+    pesoPropio = pesoDeSarah
   }
 
-  method cantidadDeAcoplados(cantidad) {
-    cantidadDeAcoplados = cantidad
+  method pesoPropio() {
+    return pesoPropio
   }
 
   method peso() {
-    return peso + self.pesoDelTransporte()
-  }
-  method peso(pesoDeSarah) {
-    peso = pesoDeSarah
-  }
-
-  method pesoTotal() {
-    return peso + self.pesoDelTransporte()
+    return pesoPropio + transporte.peso()
   }
 
   method transporte(unTransporte) {
@@ -96,9 +76,33 @@ object saraConnor {
   }
 
   method puedeLlamar() {
-    return false
+    return puedeLlamar
   }
 }
+
+// ================================ TRANSPORTES ====================================
+object moto {
+  const peso = 100
+
+  method peso() {
+    return peso        //peso de la moto
+  }
+}
+
+object camion {
+    //var peso = 500
+    var cantidadDeAcoplados = 0
+
+
+  method peso() {
+    return 500 + (cantidadDeAcoplados * 500)
+    //return peso + (cantidadDeAcoplados * 500)
+  }
+
+  method cantidadDeAcoplados(cantidad) {
+    cantidadDeAcoplados = cantidad
+  }
+} 
 
 // ================================ DESTINOS =======================================
 object puenteBrooklyn {
