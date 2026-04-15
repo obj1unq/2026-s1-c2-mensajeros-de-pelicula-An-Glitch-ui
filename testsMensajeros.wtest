@@ -1,0 +1,42 @@
+// agregar los tests
+// agregar los tests
+// PRUEBA 1: El paquete de George que no está pago no puede ser llevado por Neo a la matrix.
+// PRUEBA 2: El paquete de George que sí está pago puede ser llevado por Jean a la matrix.
+// PRUEBA 3: El paquete de George que sí está pago no puede ser llevado por Sara (que pesa 70kg) a Brooklyn si es que utiliza un camión con un acoplado.
+// PRUEBA 4: La entrega anterior puede hacerse si Sara usa una moto.
+import ej-mensajeros.*
+
+describe "prueba 1" {
+  test "El paquete no pago de George no puede ser llevado por Neo a la matrix." {
+    paquete.estaPago(false)
+    //   paquete.puedeSerEntregadoPor(neo, matrix)
+    assert.notThat(paquete.puedeSerEntregadoPor(neo, matrix))
+  }
+}
+
+describe "prueba 2" {
+  test "El paquete pago de George puede ser llevado por Jean a la matrix." {
+    paquete.estaPago(true)
+    
+    assert.that(paquete.puedeSerEntregadoPor(jeanGray, matrix))
+  }
+}
+
+describe "prueba 3" {
+  test "El paquete pago de George no puede ser llevado por Sara a la brooklyn (...)." {
+    saraConnor.transporte("Camion")
+    camion.cantidadDeAcoplados(1)
+    
+    assert.notThat(paquete.puedeSerEntregadoPor(saraConnor, puenteBrooklyn)
+    )
+  }
+}
+
+describe "prueba 4" {
+  test "Prueba 3 pero Sara usa una moto, plt sí puede ser llevado a Brooklyn." {
+    saraConnor.transporte("Moto")
+    
+    assert.that(paquete.puedeSerEntregadoPor(saraConnor, puenteBrooklyn)
+    )
+  }
+}
